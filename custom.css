@@ -1,0 +1,40 @@
+:root { --brand-a: #f59e0b; --brand-b: #fbbf24; --ink: #0f172a; }
+.line-clamp-2 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; }
+html { scroll-behavior: smooth; }
+html, body { max-width: 100%; overflow-x: hidden; }
+body { background-image: radial-gradient(60rem 60rem at 120% -10%, rgba(245,158,11,0.12), transparent), radial-gradient(50rem 50rem at -20% 10%, rgba(251,191,36,0.14), transparent); }
+/* Scrollbars: visibles en Carrusel, ocultos en Grilla */
+.carousel.track { scrollbar-width: thin; -ms-overflow-style: none; }
+.carousel.track::-webkit-scrollbar { height: 8px; }
+.carousel.track::-webkit-scrollbar-track { background: transparent; }
+.carousel.track::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 9999px; }
+.carousel.track { -webkit-mask-image: linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent); mask-image: linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent); position: relative; }
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+/* Grid layout para productos (convierte carruseles a grilla) */
+.carousel.track.as-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; overflow: visible; -webkit-mask-image: none; mask-image: none; scroll-snap-type: none; padding-bottom: 0 !important; }
+.carousel.track.as-grid { scrollbar-width: none; }
+.carousel.track.as-grid::-webkit-scrollbar { display: none; }
+@media (min-width: 640px) { .carousel.track.as-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 768px) { .carousel.track.as-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .carousel.track.as-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.carousel.track.as-grid > div { min-width: 0 !important; max-width: none !important; width: 100%; }
+.carousel.track.as-grid img { width: 100%; }
+/* Card hover polish */
+.carousel .snap-start { transition: transform 150ms ease, box-shadow 150ms ease; }
+.carousel .snap-start:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+/* Futuristic chips */
+.chip { display:inline-flex; align-items:center; gap:.5rem; padding:.5rem 1rem; border-radius:9999px; border:1px solid rgba(15,23,42,.08); background:linear-gradient(to bottom right, rgba(255,255,255,.9), rgba(255,255,255,.7)); box-shadow:0 1px 2px rgba(2,6,23,.05); color:#0f172a; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.chip:hover { background:linear-gradient(to bottom right, rgba(255,255,255,1), rgba(255,255,255,.85)); }
+.chip--active { border-color: rgba(245,158,11,.55); box-shadow: 0 0 0 3px rgba(245,158,11,.12), 0 6px 20px rgba(245,158,11,.12); }
+.chip:focus { outline: none; box-shadow: 0 0 0 3px rgba(251,191,36,.28); }
+/* Gradient CTA */
+.btn-gradient { background: linear-gradient(135deg, var(--brand-a), var(--brand-b)); color:white; border-radius:.75rem; padding:.75rem 1.25rem; box-shadow: 0 10px 25px rgba(245,158,11,.25); font-weight:600; }
+.btn-gradient:hover { filter: brightness(1.05); box-shadow: 0 14px 32px rgba(245,158,11,.32); }
+.btn-ghost { background: rgba(255,255,255,.9); color:#0f172a; border-radius:.75rem; padding:.75rem 1.25rem; border:1px solid rgba(15,23,42,.08); font-weight:600; }
+.btn-ghost:hover { background: white; }
+/* Glass cards look inside carousels/grids */
+.carousel.track > div { background: linear-gradient(to bottom right, rgba(255,255,255,.9), rgba(255,255,255,.75)); border:1px solid rgba(15,23,42,.06); }
+/* Compensar header sticky al navegar a #productos */
+#productos { scroll-margin-top: 6rem; }
+@media (min-width: 768px) { #productos { scroll-margin-top: 7rem; } }
